@@ -93,6 +93,7 @@ void solveBetter2(vector<int> &v, int sum) {
 
 // Insert each element into a hash table, and check if this is a solution
 // Requires only one traversal of our vector
+// O(n)
 void solveBest(vector<int> &v, int sum) {
   // Hash set for storing numbers we've seen
   unordered_set<int> hash;
