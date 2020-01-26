@@ -8,11 +8,8 @@
 #include <unordered_set>
 #include <vector>
 
-using std::begin;
 using std::binary_search;
 using std::cout;
-using std::end;
-using std::endl;
 using std::sort;
 using std::unordered_set;
 using std::vector;
@@ -29,14 +26,14 @@ void solveBad(vector<int> &v, int sum) {
       // Print out the solution if we find one
       if (*it_1 + *it_2 == sum) {
         cout << "FOUND SOLUTION: " << *it_1 << " + " << *it_2 << " = " << sum
-             << endl;
+             << '\n';
         return;
       }
     }
   }
 
   // Otherwise, exit unsuccesfully
-  cout << "NO SOLUTION!" << endl;
+  cout << "NO SOLUTION!\n";
 }
 
 // Sort the vector ahead of time, then do a binary search
@@ -50,13 +47,13 @@ void solveBetter1(vector<int> &v, int sum) {
     auto b = binary_search(begin(v), end(v), sum - i);
     if (b) {
       cout << "FOUND SOLUTION: " << i << " + " << sum - i << " = " << sum
-           << endl;
+           << '\n';
       return;
     }
   }
 
   // Otherwise, exit unsuccesfully
-  cout << "NO SOLUTION!" << endl;
+  cout << "NO SOLUTION!\n";
 }
 
 // Sort the vector ahead of time, then walk inwards
@@ -76,7 +73,7 @@ void solveBetter2(vector<int> &v, int sum) {
     int tmp = v[left] + v[right];
     if (tmp == sum) {
       cout << "FOUND SOLUTION: " << v[left] << " + " << v[right] << " = " << sum
-           << endl;
+           << '\n';
       return;
       // If too small, move the left index over
     } else if (tmp < sum) {
@@ -88,11 +85,12 @@ void solveBetter2(vector<int> &v, int sum) {
   }
 
   // Otherwise, exit unsuccesfully
-  cout << "NO SOLUTION!" << endl;
+  cout << "NO SOLUTION!\n";
 }
 
 // Insert each element into a hash table, and check if this is a solution
 // Requires only one traversal of our vector
+// O(n)
 void solveBest(vector<int> &v, int sum) {
   // Hash set for storing numbers we've seen
   unordered_set<int> hash;
@@ -102,7 +100,7 @@ void solveBest(vector<int> &v, int sum) {
     // Check for the corresponding number is in the hash set
     if (hash.find(sum - i) != hash.end()) {
       cout << "FOUND SOLUTION: " << i << " + " << sum - i << " = " << sum
-           << endl;
+           << '\n';
       return;
     }
 
@@ -111,7 +109,7 @@ void solveBest(vector<int> &v, int sum) {
   }
 
   // Otherwise, exit unsuccesfully
-  cout << "NO SOLUTION!" << endl;
+  cout << "NO SOLUTION!" << '\n';
 }
 
 int main() {
